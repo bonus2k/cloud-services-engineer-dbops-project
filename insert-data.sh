@@ -1,7 +1,7 @@
 #!/bin/bash
 
-PSQL_ADMIN="user"
-PSQL_PASSWORD="password"
+source .env
+
 PSQL_HOST="localhost"
 PSQL_PORT="5432"
 PSQL_DBNAME="store_default"

@@ -4,11 +4,14 @@ services:
     image: postgres:16
     container_name: postgres
     environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: "${PSQL_ADMIN}"
+      POSTGRES_PASSWORD: "${PSQL_PASSWORD}"
       POSTGRES_DB: store_default
     ports:
       - "5432:5432"
     volumes:
-      - /opt/docker/postgres/:/var/lib/postgresql/data
+      - db_store_default:/var/lib/postgresql/data
     restart: unless-stopped
+
+volumes:
+  db_store_default:
