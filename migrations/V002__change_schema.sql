@@ -3,11 +3,22 @@
 ALTER TABLE product
     ADD COLUMN price DOUBLE PRECISION;
 
+-- Добавляем первичный ключ "product_pkey" к таблице "product" для столбца "id"
+ALTER TABLE product
+    ADD CONSTRAINT product_pkey PRIMARY KEY (id);
+
+
 -- Добавляем новый столбец "date_created" в таблицу "orders"
 -- Тип данных: DATE (дата)
 -- Значение по умолчанию: текущая дата (CURRENT_DATE) на момент добавления записи
 ALTER TABLE orders
     ADD COLUMN date_created DATE DEFAULT CURRENT_DATE;
+
+
+-- Добавляем первичный ключ "orders_pkey" к таблице "orders" для столбца "id"
+ALTER TABLE orders
+    ADD CONSTRAINT orders_pkey PRIMARY KEY (id);
+
 
 -- Добавляем внешнее ключевое ограничение "fk_product" к таблице "order_product"
 -- Поле "product_id" будет ссылаться на "id" в таблице "product"
