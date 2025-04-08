@@ -16,8 +16,8 @@ VALUES
 INSERT INTO orders (id, status, date_created)
 SELECT
     i,
-    (ARRAY['pending', 'shipped', 'cancelled'])[floor(random() * 3 + 1)], -- случайный статус
-    DATE(NOW() - (random() * (NOW() + INTERVAL '90 days' - NOW()))) -- случайная дата создания
+(ARRAY['pending', 'shipped', 'cancelled'])[floor(random() * 3 + 1)],        -- случайный статус
+    DATE(NOW() - (random() * (NOW() + INTERVAL '90 days' - NOW())))    -- случайная дата создания
 FROM generate_series(1, 10000000) s(i);
 
 -- Вставляем случайные данные в таблицу "order_product"
@@ -26,7 +26,7 @@ FROM generate_series(1, 10000000) s(i);
 -- product_id: случайный id продукта (от 1 до 6, количество продуктов — 6)
 INSERT INTO order_product (quantity, order_id, product_id)
 SELECT
-    floor(1 + random() * 50)::INT, -- случайное количество
-    i, -- идентификатор заказа
-    (1 + floor(random() * 6)::INT) % 6 -- случайный продукт
+    floor(1 + random() * 50)::INT,  -- случайное количество
+    i,                      -- идентификатор заказа
+    floor(1 + random() * 6)::INT    -- случайный продукт
 FROM generate_series(1, 10000000) s(i);
