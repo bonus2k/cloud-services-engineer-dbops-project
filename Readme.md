@@ -17,6 +17,9 @@
 
 `GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO migration_service_9qml;`
 
+`GRANT CREATE ON SCHEMA public TO migration_service_9qml;`
+
+
 
 
 
